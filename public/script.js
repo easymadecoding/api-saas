@@ -31,7 +31,7 @@ async function selectPlan(plan) {
       button.classList.add('loading');
       button.disabled = true;
     }
-    const res = await fetch('/create-checkout-session', {
+    const res = await fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ plan })
