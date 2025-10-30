@@ -8,7 +8,9 @@
     "start": "node dist/server.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.77.0",
     "stripe": "^16.3.0",
+    "supabase": "^2.54.11",
     "vercel": "^48.6.7"
   },
   "devDependencies": {
