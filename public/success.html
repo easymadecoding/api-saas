@@ -18,9 +18,27 @@
 <body>
   <div class="card">
     <h1>Payment successful 🎉</h1>
-    <p>Thanks for subscribing to NutriAPI. Your account will be provisioned shortly.</p>
+    <p id="api-key-message">Loading your API key...</p>
     <a href="/">Back to home</a>
   </div>
+  <script>
+    async function loadApiKey() {
+      const params = new URLSearchParams(window.location.search);
+      const sessionId = params.get("session_id");
+      if (!sessionId) {
+        document.getElementById("api-key-message").textContent = "No session ID found in URL.";
+        return;
+      }
+      const res = await fetch("/api/session-details?session_id=" + encodeURIComponent(sessionId));
+      const data = await res.json();
+      if (res.ok) {
+        document.getElementById("api-key-message").textContent = "Your API key: " + data.api_key;
+      } else {
+        document.getElementById("api-key-message").textContent = "Could not retrieve your API key. Please contact support.";
+      }
+    }
+    loadApiKey();
+  </script>
 </body>
 </html>
 
