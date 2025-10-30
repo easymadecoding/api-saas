@@ -18,11 +18,16 @@ A beautiful, responsive landing page for your nutrition API service.
 - `styles.css` - All styling and responsive design
 - `script.js` - Interactive functionality and animations
 
-## Getting Started
+## Getting Started (with Stripe Checkout)
 
-1. Open `index.html` in your web browser
-2. The page is fully self-contained and ready to use
-3. All styling and JavaScript are included inline
+1. Copy `.env.example` to `.env` and fill your keys:
+   - `STRIPE_SECRET_KEY` (server only)
+   - `STRIPE_PRICE_STARTER`, `STRIPE_PRICE_PROFESSIONAL`, `STRIPE_PRICE_ENTERPRISE`
+   - Optionally `STRIPE_PUBLISHABLE_KEY`
+2. Install dependencies and start the dev server:
+   - `npm install`
+   - `npm run dev`
+3. Visit `http://localhost:3000`
 
 ## Customization
 
@@ -44,7 +49,7 @@ The main brand colors are defined in CSS custom properties:
 
 ## Next Steps
 
-1. **Stripe Integration**: Replace the demo `selectPlan()` function with actual Stripe checkout URLs
+1. **Supabase provisioning**: On webhook `checkout.session.completed`, create user + API key
 2. **Backend Integration**: Connect to your Supabase database for user management
 3. **API Documentation**: Add a link to your API documentation
 4. **Analytics**: Add Google Analytics or similar tracking
